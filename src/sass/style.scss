@@ -1,0 +1,149 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+$errorColor: rgb(96, 14, 0);
+$contentBackground: white;
+$background: rgba(0, 0, 0, 0.098);
+$modalBackgroundColor: rgba(0, 0, 0, 0.4);
+
+@mixin modalStyle {
+  position: fixed;
+  z-index: 10; // Увеличено для большей видимости поверх других элементов
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: $modalBackgroundColor;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $background;
+}
+
+#feedback-form {
+  border-radius: 30px;
+  padding: 20px;
+  background-color: $contentBackground;
+  width: 600px;
+  display: flex;
+  align-items: center;
+  align-self: center;
+
+  #feedback-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+
+    input,
+    textarea {
+      width: 100%; // Занимает всю доступную ширину родителя
+      margin-top: 10px; // Отступ снизу для разделения элементов формы
+      padding: 8px 12px; // Внутренние отступы для удобства ввода
+      border: 1px solid #ccc; // Легкая граница для визуального выделения
+      border-radius: 4px; // Скругление углов для современного вида
+      box-sizing: border-box; // Убеждаемся, что padding и border включены в общую ширину
+      background-color: #fff; // Белый фон
+      font-size: 16px; // Размер шрифта для удобочитаемости
+      transition: border-color 0.3s; // Плавное изменение цвета границы при фокусе
+
+      &:hover {
+        border-color: #bbb; // Слегка темнее граница при наведении для визуальной обратной связи
+      }
+
+      &:focus {
+        border-color: #007bff; // Синяя граница при фокусе для выделения активного поля
+        outline: none; // Убираем стандартный outline браузера
+      }
+
+      &::placeholder {
+        color: #aaa; // Цвет текста placeholder для контраста, но не слишком яркий
+      }
+    }
+
+    textarea {
+      min-height: 100px; // Минимальная высота текстовой области
+      max-height: 300px; // Максимальная высота текстовой области
+      resize: vertical; // Позволяет пользователю изменять размер только по вертикали
+    }
+
+    p {
+      align-self: flex-start;
+    }
+
+    button {
+      width: 100px;
+      height: 30px;
+      font-size: 16px; // Размер шрифта
+      margin-top: 10px;
+      border: none; // Убираем стандартную рамку
+      border-radius: 5px; // Скругляем углы для более современного вида
+      background-color: #007bff; // Синий цвет фона
+      color: white; // Белый текст для контраста
+      cursor: pointer; // Изменяем курсор на указатель, чтобы показать, что это кликабельный элемент
+      transition: background-color 0.3s, transform 0.5s; // Плавное изменение фона и небольшое увеличение при наведении
+
+      &:hover,
+      &:focus {
+        background-color: #0056b3;
+        transform: scale(1.05);
+        outline: none;
+      }
+    }
+  }
+}
+
+.error-message {
+  color: $errorColor;
+}
+
+.inputError {
+  border: 1px solid $errorColor;
+}
+
+.modal {
+  @include modalStyle;
+
+  .modal-content {
+    background-color: $contentBackground;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5% auto; // Меньший отступ сверху для улучшения вида на мобильных устройствах
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; // Адаптивный размер для большего контроля над шириной
+    border-radius: 8px; // Скругление углов для современного вида
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Тень для добавления глубины
+
+
+  }
+
+  .close-button {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: black;
+      text-decoration: none;
+    }
+  }
+}
