@@ -10,10 +10,10 @@ mask.mask(numberInput);
 
 document
   .getElementById("feedback-form")
-  .addEventListener("submit", async function (e) {
+  .addEventListener("submit", function (e) {
     e.preventDefault();
     if (formValidation()) {
-      await sendForm();
+     sendForm();
     }
   });
 

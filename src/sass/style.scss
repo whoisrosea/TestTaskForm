@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 
-$errorColor: rgb(96, 14, 0);
+$errorColor: rgb(202, 35, 5);
 $contentBackground: white;
 $background: rgba(0, 0, 0, 0.098);
 $modalBackgroundColor: rgba(0, 0, 0, 0.4);
@@ -110,7 +110,7 @@ body {
 }
 
 .inputError {
-  border: 1px solid $errorColor;
+  border: 1px solid $errorColor !important;
 }
 
 .modal {
@@ -128,8 +128,6 @@ body {
     width: 80%; // Адаптивный размер для большего контроля над шириной
     border-radius: 8px; // Скругление углов для современного вида
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Тень для добавления глубины
-
-
   }
 
   .close-button {

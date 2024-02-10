@@ -1,7 +1,6 @@
 import { openModal, closeModal } from "./modalHandler";
 
 export default function sendForm() {
-  console.log("FORM SENT");
   let formData = {
     name: document.getElementById("name").value,
     phone: document.getElementById("phone").value,
@@ -18,7 +17,6 @@ export default function sendForm() {
   })
     .then((response) => {
       if (!response.ok) {
-        console.log(response);
         document.getElementById("modalText").innerHTML =
           "Error: " + response.statusText;
         openModal("modal");
@@ -26,7 +24,6 @@ export default function sendForm() {
       return response.json();
     })
     .then((data) => {
-      console.log(data.message);
       if (data.status === "success") {
         ["name", "phone", "email", "message"].forEach(
           (id) => (document.getElementById(id).value = "")
